@@ -5,6 +5,11 @@ Stack::Node::Node(int data, Node* next, Node* previous)
 {
 }
 
+std::ostream& operator<<(std::ostream& os, const Stack::Node& node)
+{
+    return os << node.data;
+}
+
 Stack::Node* Stack::Node::read(std::istream& is)
 {
     int data;
@@ -12,7 +17,7 @@ Stack::Node* Stack::Node::read(std::istream& is)
 }
 
 Stack::Stack()
-    : head{nullptr}, tail{nullptr}
+    : head{ nullptr }, tail{ nullptr }
 {
 }
 
@@ -37,6 +42,7 @@ Stack::Stack(const Stack& other)
 }
 
 Stack::Stack(Stack&& other) noexcept
+    : Stack()
 {
     head = other.head;
     tail = other.tail;
@@ -52,6 +58,9 @@ Stack& Stack::operator=(const Stack& other)
         return *this;
     }
 
+    // @NOTE: copy-and-swap idiom
+    // see: https://en.cppreference.com/w/cpp/language/copy_and_swap
+    // see: https://ru.wikipedia.org/wiki/Copy-and-swap
     Stack temp(other);
     std::swap(head, temp.head);
     std::swap(tail, temp.tail);

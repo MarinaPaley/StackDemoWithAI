@@ -13,14 +13,13 @@ class Stack final
 
         Node(int data, Node* next = nullptr, Node* previous = nullptr);
 
-        // @NOTE: не хорошо, что в *.h, но быстрого исправления не нашлось
-        friend std::ostream& operator<<(std::ostream& os, const Node& node)
-        {
-            return os << node.data;
-        }
+        friend std::ostream& operator<<(std::ostream& os, const Node& node);
 
         static Node* read(std::istream& is);
     };
+
+    // @NOTE: дублирование для того, чтобы разрешить видимость private nested struct во внешнем контексте
+    friend std::ostream& operator<<(std::ostream& os, const Stack::Node& node);
 
     Node* head;
     Node* tail;
