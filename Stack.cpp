@@ -1,6 +1,6 @@
 #include "Stack.h"
 
-Stack::Node::Node(int data, Node* next, Node* previous)
+Stack::Node::Node(const int data, Node* next, Node* previous)
     : data{ data }, next{ next }, previous{ previous }
 {
 }
@@ -36,7 +36,7 @@ Stack::Stack(const Stack& other)
     auto current = other.tail;
     while (current != nullptr)
     {
-        Push(current->data);
+        Push(current);
         current = current->previous;
     }
 }
@@ -107,7 +107,7 @@ void Stack::Push(Stack::Node* node)
     }
 }
 
-void Stack::Push(int data)
+void Stack::Push(const int data)
 {
     Push(new Node(data));
 }

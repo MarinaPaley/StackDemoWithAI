@@ -11,7 +11,7 @@ class Stack final
         Node* next;
         Node* previous;
 
-        Node(int data, Node* next = nullptr, Node* previous = nullptr);
+        Node(const int data, Node* next = nullptr, Node* previous = nullptr);
 
         friend std::ostream& operator<<(std::ostream& os, const Node& node);
 
@@ -37,7 +37,7 @@ public:
 
     ~Stack();
 
-    void Push(int data);
+    void Push(const int data);
     void Pop();
     int Peek() const;
 
