@@ -13,6 +13,8 @@ class Stack final
 
         Node(const int data, Node* next = nullptr, Node* previous = nullptr);
 
+        Node* clone() const;
+
         friend std::ostream& operator<<(std::ostream& os, const Node& node);
 
         static Node* read(std::istream& is);

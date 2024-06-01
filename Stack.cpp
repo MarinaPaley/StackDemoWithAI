@@ -5,6 +5,11 @@ Stack::Node::Node(const int data, Node* next, Node* previous)
 {
 }
 
+Stack::Node* Stack::Node::clone() const
+{
+    return new Node{ data };
+}
+
 std::ostream& operator<<(std::ostream& os, const Stack::Node& node)
 {
     return os << node.data;
@@ -36,7 +41,7 @@ Stack::Stack(const Stack& other)
     auto current = other.tail;
     while (current != nullptr)
     {
-        Push(current);
+        Push(current->clone());
         current = current->previous;
     }
 }

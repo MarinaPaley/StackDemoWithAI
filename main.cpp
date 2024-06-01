@@ -15,6 +15,8 @@ int main()
 
     Stack copyStack(stack);
     std::cout << "copy ctor: " << copyStack << std::endl;
+    stack.Pop();
+    std::cout << "copy ctor: " << copyStack << std::endl;
 
     Stack moveStack{ std::move(stack) };
     std::cout << "move ctor: " << moveStack << std::endl;
